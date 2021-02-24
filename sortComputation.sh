@@ -20,7 +20,7 @@ do
     for((j = 0; j<4-i-1; j++)) 
     do
       
-        if [ ${Computation[j]} < ${Computation[$((j+1))]} ] 
+        if [ ${Computation$[j]} > ${Computation$[((j+1))]} ] 
         then
             # swap 
             temp=${Computation$[j]}
@@ -30,5 +30,5 @@ do
     done
 done
   
-echo "Array in descending order :"
+echo "Array in ascending order :"
 echo ${Computation[*]} 
