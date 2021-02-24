@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 declare -A compute
 read -p "Enter 1st number " a
@@ -14,4 +14,21 @@ Computation[((counter++))]=${compute["1st"]}
 Computation[((counter++))]=${compute["2nd"]}
 Computation[((counter++))]=${compute["3rd"]}
 Computation[((counter++))]=${compute["4th"]}
-echo ${Computation[@]}
+for ((i = 0; i<4; i++)) 
+do
+      
+    for((j = 0; j<4-i-1; j++)) 
+    do
+      
+        if [ ${Computation[j]} < ${Computation[$((j+1))]} ] 
+        then
+            # swap 
+            temp=${Computation$[j]}
+            ${Computation$[j]}=${Computation$[((j+1))]}   
+            ${Computation$[((j+1))]}=$temp 
+        fi
+    done
+done
+  
+echo "Array in descending order :"
+echo ${Computation[*]} 
